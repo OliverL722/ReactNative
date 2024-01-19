@@ -55,8 +55,9 @@ const styles = StyleSheet.create({
     width: 300,
     height: 150,
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
+    columnGap: 20,
   }, 
 
   redBox: {
@@ -70,9 +71,10 @@ const styles = StyleSheet.create({
   darkGreenContainer: {
     backgroundColor: "green",
     width: 300,
-    height: 500,
+    height: 550,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
+    rowGap: 20,
   },
 
   greenRect: {
