@@ -20,6 +20,20 @@ export default function App() {
 
       </View>
 
+      <View style={styles.darkGreenContainer}>
+
+        <View style={styles.greenRect}>
+        </View>
+
+        <View style={styles.greenRect}>
+        </View>
+
+        <View style={styles.greenRect}>
+        </View>
+
+      </View>
+
+
       <StatusBar style="auto" />
     </View>
   );
@@ -31,30 +45,40 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
+    alignItems: "center", 
+
   },
 
   darkGreyContainer: {
     backgroundColor: "grey",
-    width: 200,
-    height: 100,
+    width: 300,
+    height: 150,
     flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
   }, 
 
   redBox: {
     backgroundColor: "red",
-    height: 30,
-    width: 30,
+    height: 50,
+    width: 50,
     justifyContent: "center",
     alignItems: "center",
   },
 
   darkGreenContainer: {
-    backgroundColor: "dark green",
+    backgroundColor: "green",
+    width: 300,
+    height: 500,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
 
   greenRect: {
-    backgroundColor: "green",
+    backgroundColor: "yellow",
+    width: 200,
+    height: 50,
   },
 
 });
