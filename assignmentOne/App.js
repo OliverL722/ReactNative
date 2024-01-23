@@ -18,6 +18,10 @@ export default function App() {
         <View style={styles.grayBox}></View>
       </View>
 
+      <View style={styles.blueOutline}>
+          <View style={styles.blueBox}></View>
+      </View>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -33,7 +37,7 @@ export default function App() {
     outerHeaderTextContainer: {
       backgroundColor: colors.primary,
       width: 350,
-      height: 150,
+      height: 125,
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
@@ -45,24 +49,46 @@ export default function App() {
   
     innerHeaderTextContainer: {
       backgroundColor: colors.secondary,
-      height: 100,
+      height: 90,
       width: 300,
       justifyContent: "center",
       alignItems: "center",
+      marginTop: 5,
     },
   
     mainViewContainer: {
       backgroundColor: colors.secondary,
+      flexDirection: "row",
+      alignContent: "center",
+      justifyContent: "space-evenly",
+      rowGap: 100,
       width: 350,
       height: 600,
+
     },
   
     grayBox: {
       backgroundColor: colors.darkGrey,
-      alignContent: "center",
-      justifyContent: "space-evenly",
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 60,
+      margin: 10,
+      borderRadius: 10,
+    },
+
+    blueOutline: {
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: colors.darkGrey,
+      top: -300,
+      left: 100,
+      width: 110,
+      height: 275,
+    },
+    
+    blueBox: {
+      backgroundColor: colors.teal,
+      width: 95,
+      height: 260,
     },
   
   });
