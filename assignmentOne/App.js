@@ -31,6 +31,7 @@ export default function App() {
     container: {
       flex: 1,
       alignItems: 'center',
+      backgroundColor: colors.lightGrey,
 
     },
   
@@ -87,8 +88,8 @@ export default function App() {
     
     blueBox: {
       backgroundColor: colors.teal,
-      width: 95,
-      height: 260,
+      width: 100,
+      height: 265,
     },
   
   });
