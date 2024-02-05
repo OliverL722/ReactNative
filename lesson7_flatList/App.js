@@ -1,14 +1,17 @@
+import React, {useState} from 'react' 
 import { Text, View, StyleSheet, FlatList} from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from './app/config/colors';
 import ListItem from './app/components/ListItem';
 import ItemListSeperator from './app/components/ItemListSeperator';
+import ListItemDeleteAction from './app/components/ListItemDeleteAction';
+import { useState } from 'react';
 
 export default function App() {
 
 // this is the array we will use for the example on FlatLists
-  const friends = [
+  const initialFriends = [
     {
       id: 1,
       name: "Audi",
@@ -37,6 +40,26 @@ export default function App() {
    // add more if you like, continue the same format and use unique id numbers
 
   ]
+
+  // delare the friends array to be a state variable
+  // will initialize the array with the valued in initial friends array
+  const[friends, setFriends] = useState(initialFriends);
+
+
+  /* 
+    This function will handle the deleting of one friend,
+    will be called in the onPress for renderRightActions
+
+    Friend is the friend we want to delete from friends array
+  */
+
+      const handleDelete = (friend) => {
+        // make a new array without the friend we are deleting
+        // f is temp variable name, like a for each loop
+        const newFriends = friends.filter(f => f.id !== friend.id);
+        // call setFriends to update the array
+        setFriends(newFriends);
+      }
 
   return (
     <View style={styles.container}>
@@ -69,6 +92,7 @@ export default function App() {
             age = {item.age} 
             favActivity= {item.favActivity}
             onPress={() => console.log(item)}
+            renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete()}/>}
            />
         )}
         ItemSeparatorComponent={() => <ItemListSeperator color={colors.secondary}/>}
