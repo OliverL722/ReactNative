@@ -1,12 +1,11 @@
 import React, {useState} from 'react' 
-import { Text, View, StyleSheet, FlatList} from 'react-native';
+import { Text, View, StyleSheet, FlatList, TextInput} from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from './app/config/colors';
 import ListItem from './app/components/ListItem';
 import ItemListSeperator from './app/components/ItemListSeperator';
 import ListItemDeleteAction from './app/components/ListItemDeleteAction';
-import { useState } from 'react';
 
 export default function App() {
 
@@ -64,26 +63,25 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={[styles.text, {fontWeight: 'bold'}]}>My Friends</Text>
-     {/* First we will design ONE row of our FlatList*/}
 
-     {/*
-     <View style={styles.itemRowContainer}>
-        <Text style={styles.text}>Nathan, 17</Text>
-        <Text style={{color:colors.secondary}}>Coding in class</Text>
-    </View>
-    */}
+      <View style={styles.textInputContainer}>
 
-     {/* Then we will take this code and use it to build a ListItem component*/}
+        <View style={styles.textInputRow}>
+            <Text style={styles.textLabel}>Name:</Text>
+            <TextInput style={styles.textInput}/>
 
-     {/*<ListItem/>*/}
+            <Text style={styles.textLabel}>Age:</Text>
+            <TextInput style={styles.textInput}/>
+        </View>
 
-     {/* Next we will add one ListItem component to ensure the code is how we want*/}
+        <View style={styles.textInputRow}>
+          <Text style={styles.textLabel}>Fav Activity:</Text>
+          <TextInput style={styles.textInput}/>
+        </View>
 
-     {/* <ListItem name="Chase" age="-200" favActivity={"Bogemon"}/> */}
+      </View>
 
-     {/* Replace that code with a FlatList that has the array of friends as its data*/}
-
-     <FlatList
+     <FlatList style={alignItems = "center"}
         data={friends}
         keyExtractor={friend => friend.id.toString()}
         renderItem={({item}) => (
@@ -92,7 +90,7 @@ export default function App() {
             age = {item.age} 
             favActivity= {item.favActivity}
             onPress={() => console.log(item)}
-            renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete()}/>}
+            renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete(item)}/>}
            />
         )}
         ItemSeparatorComponent={() => <ItemListSeperator color={colors.secondary}/>}
@@ -107,6 +105,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -115,12 +114,49 @@ const styles = StyleSheet.create({
     padding: 8,
   },
 
+  textInputContainer: { 
+    backgroundColor: colors.medium,
+    height: 150,
+    padding: 10,
+    marginBottom: 20,
+    marginTop: 20,
+    width: '100%',
+    borderRadius: 10,
+  },
+
+  textInputRow: {
+    flexDirection: "row", 
+    height: 50, 
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    margin: 5,
+  },
+
+  textLabel: {
+    margin: 10,
+    fontSize: 16,
+  },
+
+  textInput: {
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: colors.secondary,
+    backgroundColor: 'white',
+    width: 100,
+    height: 40,
+    fontSize: 12,
+    padding: 3,
+    margin: 10
+  },
+
   itemRowContainer:{
     backgroundColor: colors.light,
     padding: 5,
+    borderRadius: 10,
   },
  
   text: {
+    margin: 5,
     color: colors.primary,
     fontSize: 20,
   }

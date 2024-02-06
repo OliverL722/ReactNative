@@ -11,7 +11,10 @@ export default function ItemListSeperator({color=colors.dark}) {
 
 const styles = StyleSheet.create({
     separator: {
-        width: '100%',
+
+        borderRadius: 10,
+        marginLeft: 10,
+        width: '95%',
         height: 5,
     }
 })

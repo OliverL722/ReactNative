@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
       itemRowContainer:{
         backgroundColor: colors.light,
         padding: 5,
+        borderRadius: 10,
+        margin: 5,
       },
      
       text: {
