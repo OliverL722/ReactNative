@@ -1,5 +1,5 @@
 import React, {useState} from 'react' 
-import { Text, View, StyleSheet, FlatList, TextInput} from 'react-native';
+import { Text, View, StyleSheet, FlatList, TextInput, TouchableHighlight, Keyboard} from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from './app/config/colors';
@@ -44,6 +44,12 @@ export default function App() {
   // will initialize the array with the valued in initial friends array
   const[friends, setFriends] = useState(initialFriends);
 
+  // make vars to represent data entered for a new friend
+  const[id, setId] = useState(initialFriends.length + 1);
+  const [name, setName] = useState('');
+  const[age, setAge] = useState('');
+  const[favActivity, setFavActivity] = useState('');
+
 
   /* 
     This function will handle the deleting of one friend,
@@ -59,6 +65,27 @@ export default function App() {
         // call setFriends to update the array
         setFriends(newFriends);
       }
+      
+      const handleAdd = () => {
+        // create a friend object from the state variables
+        const newFriend = {
+          id: id,
+          name: name,
+          age: age,
+          favActivity: favActivity, 
+        }
+
+        // call setFriends to update the array to contain this new object
+        setFriends([...friends, newFriend]);
+
+        // call setID to increment the id value for the next friend to be added
+        setId(id + 1);
+        setName('');
+        setAge('');
+        setFavActivity('');
+        Keyboard.dismiss();
+
+      }
 
   return (
     <View style={styles.container}>
@@ -68,15 +95,42 @@ export default function App() {
 
         <View style={styles.textInputRow}>
             <Text style={styles.textLabel}>Name:</Text>
-            <TextInput style={styles.textInput}/>
+            <TextInput 
+              style={styles.textInput}
+              onChangeText={text => setName(text)}
+              value={name}
+              />
 
             <Text style={styles.textLabel}>Age:</Text>
-            <TextInput style={styles.textInput}/>
+
+              <TextInput 
+                style={styles.textInput}
+                onChangeText={text => setAge(text)}
+                value={age}
+              />
+            
         </View>
 
         <View style={styles.textInputRow}>
           <Text style={styles.textLabel}>Fav Activity:</Text>
-          <TextInput style={styles.textInput}/>
+          <TextInput 
+            style={styles.textInput}
+            onChangeText={text => setFavActivity(text)}
+            value={favActivity}
+            />
+
+            <TouchableHighlight
+
+              style={styles.button}
+              onPress={() =>  handleAdd()}
+              underlayColor={colors.teal}>
+
+              <View>
+                <Text>Add!</Text>
+              </View>
+
+            </TouchableHighlight>
+
         </View>
 
       </View>
@@ -95,8 +149,6 @@ export default function App() {
         )}
         ItemSeparatorComponent={() => <ItemListSeperator color={colors.secondary}/>}
       />
-     
-     {/* Create a ListItemSeparator component that can go between ListItems */}
 
      {/* Begin to interact with our FlatList (more to come!) */}
 
@@ -159,5 +211,17 @@ const styles = StyleSheet.create({
     margin: 5,
     color: colors.primary,
     fontSize: 20,
-  }
+  },
+
+  button: {
+    height: 40,
+    width: 100,
+    backgroundColor: 'lightgreen',
+    borderRadius: 10,
+    borderColor: colors.secondary,
+    borderWidth: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 20,
+  },
 });
