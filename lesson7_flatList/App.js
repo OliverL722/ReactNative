@@ -6,6 +6,7 @@ import colors from './app/config/colors';
 import ListItem from './app/components/ListItem';
 import ItemListSeperator from './app/components/ItemListSeperator';
 import ListItemDeleteAction from './app/components/ListItemDeleteAction';
+import AddFriendComponent from './app/components/AddFriendComponent';
 
 export default function App() {
 
@@ -66,74 +67,19 @@ export default function App() {
         setFriends(newFriends);
       }
       
-      const handleAdd = () => {
-        // create a friend object from the state variables
-        const newFriend = {
-          id: id,
-          name: name,
-          age: age,
-          favActivity: favActivity, 
-        }
+      const handleAdd = (newFriend) => {
 
         // call setFriends to update the array to contain this new object
         setFriends([...friends, newFriend]);
-
-        // call setID to increment the id value for the next friend to be added
-        setId(id + 1);
-        setName('');
-        setAge('');
-        setFavActivity('');
-        Keyboard.dismiss();
-
       }
 
   return (
     <View style={styles.container}>
       <Text style={[styles.text, {fontWeight: 'bold'}]}>My Friends</Text>
 
-      <View style={styles.textInputContainer}>
-
-        <View style={styles.textInputRow}>
-            <Text style={styles.textLabel}>Name:</Text>
-            <TextInput 
-              style={styles.textInput}
-              onChangeText={text => setName(text)}
-              value={name}
-              />
-
-            <Text style={styles.textLabel}>Age:</Text>
-
-              <TextInput 
-                style={styles.textInput}
-                onChangeText={text => setAge(text)}
-                value={age}
-              />
-            
-        </View>
-
-        <View style={styles.textInputRow}>
-          <Text style={styles.textLabel}>Fav Activity:</Text>
-          <TextInput 
-            style={styles.textInput}
-            onChangeText={text => setFavActivity(text)}
-            value={favActivity}
-            />
-
-            <TouchableHighlight
-
-              style={styles.button}
-              onPress={() =>  handleAdd()}
-              underlayColor={colors.teal}>
-
-              <View>
-                <Text>Add!</Text>
-              </View>
-
-            </TouchableHighlight>
-
-        </View>
-
-      </View>
+      <AddFriendComponent 
+        startingId={initialFriends.length+1}
+        handleAdd={handleAdd}/>
 
      <FlatList style={alignItems = "center"}
         data={friends}
@@ -174,6 +120,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: '100%',
     borderRadius: 10,
+    borderWidth: 3,
+    borderColor: colors.secondary,
   },
 
   textInputRow: {
