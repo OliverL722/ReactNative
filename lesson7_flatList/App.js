@@ -1,5 +1,5 @@
 import React, {useState} from 'react' 
-import { Text, View, StyleSheet, FlatList, TextInput, TouchableHighlight, Keyboard} from 'react-native';
+import { Text, View, StyleSheet, FlatList} from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from './app/config/colors';

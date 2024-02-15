@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 
 import colors from '../config/colors';
 
-export default function AddFriendComponent({startingId, handleAdd}) {
+export default function AddFrienrdComponent({startingId, handleAdd}) {
 
 
 

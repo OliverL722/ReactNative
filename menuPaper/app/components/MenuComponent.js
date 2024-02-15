@@ -21,10 +21,11 @@ const MenuComponent = () => {
           visible={visible}
           onDismiss={closeMenu}
           anchor={<Button onPress={openMenu}>Show menu</Button>}>
-          <Menu.Item onPress={() => {}} title="Item 1" />
-          <Menu.Item onPress={() => {}} title="Item 2" />
-          <Divider />
-          <Menu.Item onPress={() => {}} title="Item 3" />
+          <Menu.Item leadingIcon="airplane" onPress={() => {}} title="Woosh" />
+          <Menu.Item leadingIcon="apple" onPress={() => {}} title="Yum" />
+          <Menu.Item leadingIcon="axe" onPress={() => {}} title="Chop chop!!" disabled />
+          <Menu.Item leadingIcon="bank" onPress={() => {}} title="Money :)" disabled />
+          <Menu.Item leadingIcon="battery-10" onPress={() => {}} title="Charge your phone!!!!" />
         </Menu>
       </View>
     </PaperProvider>
@@ -32,3 +33,8 @@ const MenuComponent = () => {
 };
 
 export default MenuComponent;
+
+
+
+
+

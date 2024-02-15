@@ -5,7 +5,7 @@ import MenuComponent from './app/components/MenuComponent';
 export default function App() {
   return (
     <View style={styles.container}>
-      <MenuComponent></MenuComponent>
+      <MenuComponent style={styles.menuStyle}></MenuComponent>
     </View>
   );
 }
@@ -16,5 +16,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
+    flexDirection: 'row',
   },
+  menuStyle: {
+  
+  }
 });
